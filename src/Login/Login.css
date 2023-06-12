@@ -1,0 +1,144 @@
+
+.login-page{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    background: linear-gradient(45deg, #810551, #00464e);
+    width: 400px;
+    aspect-ratio: 1;
+    border-radius: 10px;
+    padding: 60px 80px;
+}
+.login-page::before{
+    position: absolute;
+    content: '';
+    height: calc(100% - 80px);
+    width: calc(100% - 50px);
+    background-color: #111;
+    border-radius: 9px;
+}
+.login-page header{
+    position: absolute;
+    top: 60px;
+    display: flex;
+    align-items: center;
+}
+.login-page header span{
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.533);
+}
+
+.logo{
+    position: relative;
+    width: 100px;
+    border-radius: 50%;
+    margin-top: 40px;
+}
+
+.login-page form{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    margin-top: 30px;
+}
+.login-page form .username,
+.login-page form .email,
+.login-page form .password{
+    position: relative;
+}
+.login-page form input{
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    padding: 20px 10px 3px;
+    border-bottom: 1px solid #810551;
+    color: white;
+}
+.login-page form input:focus{
+    outline: none;
+}
+.login-page form label{
+    position: absolute;
+    font-size: 13px;
+    top: 18px;
+    left: 3px;
+    color: rgba(255, 255, 255, 0.523);
+    transition: 0.2s ease;
+}
+.login-page form input:focus ~ label,
+.login-page form input:valid ~ label{
+    top: 0;
+    color:#810551;
+}
+
+.status{
+    width: 30px;
+    margin: 0 auto;
+    scale: 0;
+    animation: show .5s ease forwards;
+}
+@keyframes show{
+    to{
+        scale: 1;
+    }
+}
+.error{
+    color: red;
+    font-size: 12px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+
+
+.login-page form button{
+    background-color: #810551;
+    border: none;
+    border-radius: 3px;
+    margin-top: 10px;
+    padding: 10px;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+}
+.button:active{
+    scale: 0.98;
+}
+
+.user-stat{
+    color: white;
+    font-size: 12px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+.user-stat b{
+    color: #810551;
+    cursor: pointer;
+}
+
+.spin{
+   margin: 0px 10px;
+   
+}
+.loading {
+    font-size: 15px;
+    animation: spin 2s linear infinite;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+
+
+@media (max-width: 767px) {
+    .login-page header{
+        margin: 0 45px;
+    }
+}
