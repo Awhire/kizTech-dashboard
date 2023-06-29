@@ -24,6 +24,15 @@ function App() {
   return (
     <ThemeContext.Provider value={{ DarkTheme, setDarkTheme }}>
       <div className="App">
+        {/* {!loggedIn && <login />}
+        {loggedIn && (
+          <>
+            <Navigation />
+
+            <Main />
+          </>
+        )} */}
+        
         {loggedIn ? (
           <>
             <Navigation />

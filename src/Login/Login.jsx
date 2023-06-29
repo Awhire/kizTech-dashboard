@@ -1,7 +1,12 @@
 import "./Login.css";
 import kiztech from "../assets/KizTech.jpg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import warning from "../assets/warning.png";
+
+// import { useHistory } from 'react-router-dom';
+
+
+
 
 import { auth } from "../Firebase";
 import {
@@ -20,6 +25,7 @@ const Login = () => {
 
   const [error, setError] = useState(false);
   const [errorMsg, setErrorMsg] = useState(false);
+  
 
   const submit = (e) => {
     e.preventDefault();
@@ -31,6 +37,7 @@ const Login = () => {
         createUserWithEmailAndPassword(auth, email, password)
           .then(() => {
             localStorage.setItem("username", username);
+            navigate('/analytics');
           })
           .catch((error) => {
             setError(true);
@@ -39,7 +46,13 @@ const Login = () => {
           });
       } else {
         // Sign in user
-        signInWithEmailAndPassword(auth, email, password).catch((error) => {
+        signInWithEmailAndPassword(auth, email, password)
+        .then((res) => {
+          console.log(res)
+          localStorage.setItem("email", res.user.email);
+          
+        })
+        .catch((error) => {
           setError(true);
           const errorMessage = error.message;
           setErrorMsg(errorMessage);
@@ -48,6 +61,20 @@ const Login = () => {
       setLoading(false);
     }, 2000);
   };
+
+  useEffect(() => {
+    if(localStorage.getItem("email")) {
+      localStorage.setItem("test", "test")
+
+      // route user to dashboard
+      // const history = useHistory();
+
+      // history.push('/'); 
+    } 
+
+  }, []);
+
+
 
   return (
     <div className="login-page">
@@ -137,3 +164,4 @@ const Login = () => {
 };
 
 export default Login;
+ 

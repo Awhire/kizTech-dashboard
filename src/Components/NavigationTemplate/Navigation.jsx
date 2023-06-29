@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState, useRef } from "react";
-
+import { NavLink, Link } from "react-router-dom";
 import "./Navigation.css";
 import Misfits from "../../assets/Misfits.jpg";
 import Nav from "../NavIconTemplate/Nav";
@@ -28,7 +28,7 @@ const Navigation = () => {
   };
 
   useEffect(() => {
-    setUsername(localStorage.getItem("username"))
+    setUsername(localStorage.getItem("email"))
   }, [])
 
 
@@ -67,14 +67,28 @@ const Navigation = () => {
         </div>
         <span>{username}</span>
       </header>
+      
 
-      <Nav title="Dashboard" Icon={TbDashboard} />
-      <Nav title="Analytics" Icon={VscGraphLine} />
-      <Nav title="Message" Icon={BsChatLeft} />
-      <Nav title="Followers" Icon={AiOutlineUsergroupAdd} />
+        <NavLink to="/">
+          <Nav title="Dashboard" Icon={TbDashboard} />
+        </NavLink>
+
+        <NavLink to="/analytics">
+          <Nav title="Analytics" Icon={VscGraphLine} /> 
+        </NavLink>
+
+        {/* <NavLink to="/message">
+          <Nav title="Message" Icon={BsChatLeft} />
+        </NavLink> */}
+
+        {/* <NavLink to="/followers">
+          <Nav title="Followers" Icon={AiOutlineUsergroupAdd} />
+        </NavLink> */}
 
       <div className="divider"></div>
 
+      <Nav title="Message" Icon={BsChatLeft} />
+      <Nav title="Followers" Icon={AiOutlineUsergroupAdd} />
       <Nav title="Notifications" Icon={MdOutlineNotificationsActive} />
       <Nav title="Following" Icon={RiAccountCircleLine} />
       <Nav title="Earnings" Icon={AiOutlineDollarCircle} />

@@ -15,7 +15,10 @@ const Header = () => {
     const { DarkTheme, setDarkTheme } = useContext(ThemeContext)
 
     const logout = () => {
-        signOut(auth)
+        signOut(auth);
+        delete localStorage.username;
+        delete localStorage.email;
+        
     }
 
   return (
